@@ -126,7 +126,7 @@ nav a:hover, nav a:focus {
 
 /* Step 3: Write selector/rule property to style all elements when in focus*/
 :focus {
-  outline: 2px solid; 
+  outline: 2px solid black; 
 }
 
 
@@ -142,8 +142,10 @@ first div in the grid  and place it in the grid. */
 .container > :first-child {
   grid-column: 1 / -1;
   min-height: 500px;
-  background: url('header.jpg') no-repeat center center fixed; 
+  background-image: url('../images/header.jpg');
+  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 
@@ -151,24 +153,70 @@ first div in the grid  and place it in the grid. */
  four rows in the grid. */
 
       /*This will be a lot of rules.... but be strategic and combine seletors*/
-.about, 
-.method,
-.clients,
+.about {
+  grid-column: 2 / 3; /* Begin in the 2nd column and span one column */
+  grid-row: 2 / 3; /* Begin on the 2nd row */
+  position: relative; /* Ensure relative positioning for content */
+  z-index: 2; /* Set a higher z-index to appear above the images */
+}
+.method {
+  grid-column: 2 / 3; /* Begin in the 2nd column and span one column */
+  grid-row: 3 / 4; /* Begin on the 3rd row */
+  position: relative; /* Ensure relative positioning for content */
+  z-index: 2; /* Set a higher z-index to appear above the images */
+}
+.clients {
+  grid-column: 2 / 3; /* Begin in the 2nd column and span one column */
+  grid-row: 4 / 5; /* Begin on the 4th row */
+  position: relative; /* Ensure relative positioning for content */
+  z-index: 2; /* Set a higher z-index to appear above the images */
+}
 .contact {
-  grid-column: 2;
+  grid-column: 2 / 3; /* Begin in the 2nd column and span one column */
+  grid-row: 5 / 6; /* Begin on the 5th row */
+  position: relative; /* Ensure relative positioning for content */
+  z-index: 2; /* Set a higher z-index to appear above the images */
 }
 
-.about-image,
-.method-image, 
-.clients-image,
+.about-image {
+  grid-column: 1 / -1; /* Cover all columns */
+  grid-row: 2 / 3; /* Begin on the 2nd row */
+  max-height: 600px; /* Maximum height of 600px */
+  overflow: hidden; /* Hide content that goes outside the grid cell */
+  position: relative; /* Ensure relative positioning for images */
+  z-index: 1; /* Set a lower z-index to appear behind the text */
+}
+.method-image {
+  grid-column: 1 / -1; /* Cover all columns */
+  grid-row: 3 / 4; /* Begin on the 3rd row */
+  max-height: 600px; /* Maximum height of 600px */
+  overflow: hidden; /* Hide content that goes outside the grid cell */
+  position: relative; /* Ensure relative positioning for images */
+  z-index: 1; /* Set a lower z-index to appear behind the text */
+}
+
+/* Style the .clients-image */
+.clients-image {
+  grid-column: 1 / -1; /* Cover all columns */
+  grid-row: 4 / 5; /* Begin on the 4th row */
+  max-height: 600px; /* Maximum height of 600px */
+  overflow: hidden; /* Hide content that goes outside the grid cell */
+  position: relative; /* Ensure relative positioning for images */
+  z-index: 1; /* Set a lower z-index to appear behind the text */
+}
+
+/* Style the .contact-image */
 .contact-image {
-  grid-column: 1 / -1;
-  max-height: 600px;
-  overflow: hidden;
+  grid-column: 1 / -1; /* Cover all columns */
+  grid-row: 5 / 6; /* Begin on the 5th row */
+  max-height: 600px; /* Maximum height of 600px */
+  overflow: hidden; /* Hide content that goes outside the grid cell */
+  position: relative; /* Ensure relative positioning for images */
+  z-index: 1; /* Set a lower z-index to appear behind the text */
 }
 
  /* Step 8: Write the selector/rule property to style the .text-block class. */
- .text-block {
+.text-block {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,8 +225,12 @@ first div in the grid  and place it in the grid. */
   overflow: auto;
 }
 
+.text-block h2{
+  order: -1;
+}
+
 /* Add your media query here */
-@media (min-width: 800px) {
+@media screen and (min-width: 800px) {
 
   /* Step 9: Write the selector/rule property to style the nav element */
   nav {
@@ -188,7 +240,9 @@ first div in the grid  and place it in the grid. */
 
   /* Step 10: Write the selector/rule property to update the .container class */
   .container {
+    display: grid;
     grid-template-columns: 50px auto 500px auto 50px;
+    gap: 15px;
   }
 
   /* Steps 11 and 12: Update the grid-column property of the grid's children (where-needed)*/
